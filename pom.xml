@@ -33,28 +33,17 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.hbase</groupId>
-			<artifactId>hbase-client</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.phoenix</groupId>
 			<artifactId>phoenix-core</artifactId>
 			<version>4.5.2-HBase-1.0</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>hbase-client</artifactId>
-					<groupId>org.apache.hbase</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<!-- commons-pool -->
@@ -97,7 +86,7 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -147,15 +136,15 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- 导出依赖的jar包  <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
+			<!-- 导出依赖的jar包 <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
 				<version>2.9</version> <executions> <execution> <id>copy-dependencies</id> 
 				<phase>package</phase> <goals> <goal>copy-dependencies</goal> </goals> <configuration> 
 				<outputDirectory>target/libs</outputDirectory> <overWriteReleases>false</overWriteReleases> 
 				<overWriteSnapshots>false</overWriteSnapshots> <overWriteIfNewer>true</overWriteIfNewer> 
-				</configuration> </execution> </executions> </plugin>-->
+				</configuration> </execution> </executions> </plugin> -->
 		</plugins>
 	</build>
-	
+
 	<repositories>
 		<repository>
 			<id>localrepository</id>
@@ -175,5 +164,5 @@
 			<url>http://10.201.26.114:8082/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+
 </project>
