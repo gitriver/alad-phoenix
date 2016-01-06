@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd"
+	default-lazy-init="true">
+
+	<context:property-placeholder location="classpath:phoenix.properties" />
+
+	<!-- 连接池，管理器，客户端代理 -->
+	<!-- phoenix连接池配置 -->
+	<!-- phoenix连接管理配置 -->
+	<bean id="poolFactoryBean" class="me.alad.phoenix.pool.PhoenixPoolableObjectFactory">
+		<!-- phoenix connection config -->
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="validateTimeout" value="${jdbc.conn.validateTimeout}" />
+		<property name="tenantId" value="${TenantId}" />
+		<property name="mutateMaxSize" value="${phoenix.mutate.maxSize}" />
+		<property name="mutateBatchSize" value="${phoenix.mutate.batchSize}" />
+		<property name="hbaseConfFile" value="${hbase.conf.file}"/>
+	</bean>
+	<bean id="connectionProviderBean" class="me.alad.phoenix.pool.ConnectionProviderImpl">
+		<property name="poolFactory" ref="poolFactoryBean" />
+		<!-- pool config -->
+		<property name="maxActive" value="${pool.maxActive}" />
+		<property name="maxIdle" value="${pool.maxIdle}" />
+		<property name="minIdle" value="${pool.minIdle}" />
+		<property name="maxWait" value="${pool.maxWait}" />
+		<property name="testOnBorrow" value="${pool.testOnBorrow}" />
+		<property name="testOnReturn" value="${pool.testOnReturn}" />
+		<property name="testWhileIdle" value="${pool.testWhileIdle}" />
+	</bean>
+	<!-- phoenix连接管理配置 -->
+	<bean id="connectionManagerBean" class="me.alad.phoenix.pool.ConnectionManager">
+		<property name="connectionProvider" ref="connectionProviderBean" />
+	</bean>
+</beans>
