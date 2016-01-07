@@ -33,6 +33,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-client</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -44,6 +49,12 @@
 			<groupId>org.apache.phoenix</groupId>
 			<artifactId>phoenix-core</artifactId>
 			<version>4.5.2-HBase-1.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hbase-client</artifactId>
+					<groupId>org.apache.hbase</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- commons-pool -->
