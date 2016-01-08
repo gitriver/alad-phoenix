@@ -12,7 +12,7 @@
 	<!-- phoenix连接管理配置 -->
 	<bean id="poolFactoryBean" class="me.alad.phoenix.pool.PhoenixPoolableObjectFactory">
 		<!-- phoenix connection config -->
-		<property name="jdbcUrl" value="jdbc:phoenix:bigdata02,bigdata03,bigdata04:2181/hbase" />
+		<property name="jdbcUrl" value="jdbc:phoenix:bigdata01,bigdata03,bigdata04:2181/hbase" />
 		<property name="validateTimeout" value="120" />
 		<property name="tenantId" value="" />
 		<property name="mutateMaxSize" value="500000" />
