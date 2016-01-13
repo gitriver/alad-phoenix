@@ -13,5 +13,4 @@ hs_err_pid*
 *.cache
 *.cache-tests
 *SimpleDemo*.java
-*test/
 

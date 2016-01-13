@@ -1,0 +1,23 @@
+####SQL@导出文件绝对路径@字段分割符@是否追加(默认不追加)######
+##select busitype,count(distinct usermac) from wifi.portallog group by busitype@F:\portallog.txt@	@true
+##select busitype,count(distinct usermac) from wifi.portallog where day between 20150420 and 20150426 group by busitype@F:\portallog.txt@	@true
+##select busitype,count(*) from wifi.portallog where day between 20150420 and 20150426 group by busitype@F:\portallog.txt@	@true
+##select * from logger.action@F:\action.txt@	@false
+##select * from log.sql@F:\sql.txt@	@false
+
+
+###导出一份 咸宁、邯郸 使用过Wi-Fi的用户,通过公司环境mysql库xbandservice表xbs_area通过字段title查询出id,然后id反转 （alad-analyse-service项目下stat.statutil）关联hbase表wifi.cityuser
+##select USERMAC,USERID from wifi.cityuser where BUSITYPE = 3 and id in('b3004525-46a8-3e11-6048-f068794a')@F:\cityuser.txt@	@true
+##select USERMAC,USERID from wifi.cityuser where BUSITYPE = 3 and id in('b3004525-46a8-3e11-6048-526d794a')@F:\cityuser.txt@	@true
+
+###导出一份 南康、兴国 使用过Wi-Fi的用户
+##select USERMAC,USERID from wifi.areauser where BUSITYPE = 3 and id in('b3004525-46a8-3e11-6048-6d557b7a')@F:\xingguo.txt@	@true
+##select USERMAC,USERID from wifi.areauser where BUSITYPE = 3 and id in('b3004525-46a8-3e11-6048-e8757b7a')@F:\nankan.txt@	@true
+
+##select USERMAC,USERID from wifi.areauser where BUSITYPE = 3 and id in('b3004525-46a8-3e11-6048-fef58b7a')@F:\changqing.txt@	@true
+
+##select USERMAC,USERID from wifi.areauser where BUSITYPE = 3 and id in('b3004525-46a8-3e11-6048-8696748a')@F:\liling.txt@	@true
+
+##select USERMAC,USERID from wifi.areauser where id in('8c3fcb12f97be217d41f5c35')@F:\changping.txt@	@true
+
+select stationid,busitype,provinceid,cityid,count(*) pv,count(distinct usermac) au from wifi.portallog where day= 20150624  and busitype =3 and stationid is not null group by stationid,busitype,provinceid,cityid order by pv desc@F:\station20150624.txt@	@true
