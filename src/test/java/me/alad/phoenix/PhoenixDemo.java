@@ -35,7 +35,7 @@ public class PhoenixDemo {
 
     public static void main(String[] args) {
         final ApplicationContext context =
-                new ClassPathXmlApplicationContext("applicationContext-client.xml");
+                new ClassPathXmlApplicationContext("applicationContext-phoenix.xml");
 
         ConnectionManager connManager = (ConnectionManager) context.getBean("connectionManagerBean");
 
